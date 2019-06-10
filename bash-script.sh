@@ -42,32 +42,36 @@ fi
 #---------------Applying network----------- 
 #--------------emulation settings----------
 
-for ((v = 0 ; v < numberOfStages ; v++ ));          #SUM
+for ((v = 0 ; v < numberOfStages ; v++ ));          #duration of the experiment
         do r=$( echo ${shaperDurationArray[$v]})
         let " durationOfExperiment= durationOfExperiment + r"
         done
 
 
 sudo docker exec -d dtc-player-experiment python /home/seluser/run-scripts/python-head.py $player_1_url $numberOfExperiments $durationOfExperiment
-echo "rate = ${shaperBWArray[0]}kbit"
-        sudo curl -d'rate=${shaperBWArray[0]}kbit' localhost:4080/dtc-player-experiment
+
 
 #----------------Monitoring------------------
 
-for j in $(seq $numberOfExperiments)
+for j in $(seq $numberOfExperiments) #--------------------------------test number of experiment
         do m=0
-        k=0
-        for i in $(seq $durationOfExperiment)
-                do let "time_seg = $( echo ${shaperDurationArray[$k]})"
+        k=1
+	l=0
+	echo "rate = ${shaperBWArray[0]}kbit"
+        sudo curl -d"rate=${shaperBWArray[0]}kbit" localhost:4080/dtc-player-experiment
+
+        for i in $(seq $durationOfExperiment) #----------------------------test the experiment is not finished
+                do let "time_seg = $( echo ${shaperDurationArray[$l]})"
                 let "time_t = time_seg + m "
-                if (($i == $time_t))
+                if (($i == $time_t)) #test if we change segment
                         then let "m = i"
+			rate=${shaperBWArray[$k]}
+                        echo "rate = $rate bit"
+			sudo curl -d"rate= $rate kbit" localhost:4080/dtc-player-experiment
 			k=$((k+1))
-                        echo "rate = ${shaperBWArray[$k]}kbit"
-			sudo curl -d'rate=${shaperBWArray[$k]}kbit' localhost:4080/dtc-player-experiment
-                     
+			l=$((l+1))
                 fi
-                echo "Status: in progress"
+                echo "Status: in progress"	 #------------------------write information on the console
                 echo "Experiment $j/$numberOfExperiments"
                 t=$((t+1))
 		Time=$(($durationOfExperiment*$numberOfExperiments))
