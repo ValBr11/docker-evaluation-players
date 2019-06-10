@@ -53,15 +53,15 @@ The result of the experiment can be find on Bitmovin Analytics if you use the Bi
 
 This project is not finished, for the moment you can run only on player (no parallel mode) and only the bandwidth can be changed. 
 
-### Components 
+# Components 
 
-# Docker Traffic Control (Docker-tc) 
+## Docker Traffic Control (Docker-tc) 
 https://github.com/lukaszlach/docker-tc
 
-# Selenium Docker 
+## Selenium Docker 
 https://github.com/SeleniumHQ/docker-selenium
 
-# Bitmovin Player and Analitycs 
+## Bitmovin Player and Analitycs 
 https://bitmovin.com/
 
 ## Software Certificates and Keys
