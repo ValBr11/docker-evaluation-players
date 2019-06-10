@@ -39,12 +39,12 @@ An experiment can be started with the following command:
 `sudo bash ./bash-script.sh`
 
 
-# Monitoring
+## Monitoring
 
 Every second, you can see the status of you experiment in the terminal with the time to end the experiment.  
 
 
-# Result
+## Result
 
 The result of the experiment can be find on Bitmovin Analytics if you use the Bitmovin player. 
 
@@ -53,6 +53,16 @@ The result of the experiment can be find on Bitmovin Analytics if you use the Bi
 
 This project is not finished, for the moment you can run only on player (no parallel mode) and only the bandwidth can be changed. 
 
+### Components 
+
+# Docker Traffic Control (Docker-tc) 
+https://github.com/lukaszlach/docker-tc
+
+# Selenium Docker 
+https://github.com/SeleniumHQ/docker-selenium
+
+# Bitmovin Player and Analitycs 
+https://bitmovin.com/
 
 ## Software Certificates and Keys
 
