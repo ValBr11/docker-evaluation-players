@@ -7,11 +7,11 @@ Evaluation of the Performance of Adaptive HTTP Streaming Players System in Docke
 
 ### Building the Docker Image
 
-Run `sudo ./bash build.sh' if you want to create the docker image locally
+Run `sudo ./bash build.sh` if you want to create the docker image locally
 
 ### Pushing the Docker Image
 
-Run `sudo ./bash push.sh' if you want to push the docker image on Docker Hub
+Run `sudo ./bash push.sh` if you want to push the docker image on Docker Hub
 
 ### Readily Compiled Docker Image
 
