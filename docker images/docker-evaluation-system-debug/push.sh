@@ -7,4 +7,4 @@ CONTAINER='valbr11/docker-evaluation-system-debug'
 CONTAINERTAG='valbr11/docker-evaluation-system-debug:latest'
 
 #docker login --username=yourhubusername --password=yourpassword
-docker login --username=valbr11 --password=dockerval && docker push ${CONTAINERTAG} && echo "Finished uploading ${CONTAINERTAG}"
+docker login --username= --password= && docker push ${CONTAINERTAG} && echo "Finished uploading ${CONTAINERTAG}"

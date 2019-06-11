@@ -18,7 +18,7 @@ numberOfExperiments=2 # the number of experiments
 numberOfStages=5
 shaperDurationArray=(15 15 20 10 15) #sec
 shaperDelayArray=(70 70 70 70 70) #ms
-shaperBWArray=(500 1000 3000 500 100) #kbits
+shaperBWArray=(5000 1000 3000 500 100) #kbits
 shaperPacketLossArray=(0 0 0 0 0) # percentage
 
 #---------------Initialization--------------
@@ -57,7 +57,6 @@ for j in $(seq $numberOfExperiments) #--------------------------------test numbe
         do m=0
         k=1
 	l=0
-	echo "rate = ${shaperBWArray[0]}kbit"
         sudo curl -d"rate=${shaperBWArray[0]}kbit" localhost:4080/dtc-player-experiment
 
         for i in $(seq $durationOfExperiment) #----------------------------test the experiment is not finished
@@ -66,7 +65,6 @@ for j in $(seq $numberOfExperiments) #--------------------------------test numbe
                 if (($i == $time_t)) #test if we change segment
                         then let "m = i"
 			rate=${shaperBWArray[$k]}
-                        echo "rate = $rate bit"
 			sudo curl -d"rate= $rate kbit" localhost:4080/dtc-player-experiment
 			k=$((k+1))
 			l=$((l+1))
